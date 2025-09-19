@@ -3,11 +3,21 @@
 For generating natural landscape scenes in the **Studio Ghibli style**, diffusion models learn from a collection of Ghibli-inspired artwork, capturing their distinctive soft color palettes, watercolor textures, and atmospheric lighting.
 This enables the model to synthesize new images that evoke the warm, nostalgic, and hand-painted feel characteristic of Ghibli films, blending fantasy with nature in a harmonious way.
 ## Data
-The project uses the pre-trained model [**_Diffuser_**](https://github.com/huggingface/diffusers?tab=readme-ov-file) as the core for generating natural landscape images with the iconic Studio Ghibli art style. 
-The model generates images with a resolution of _704x512_ pixels, featuring diverse natural landscapes including forests, beaches, mountains, and various weather conditions such as sunny, snowy, and starry nights, capturing the rich and atmospheric essence of Studio Ghibli’s visual style.
+The project leverages a pre-trained [**_Diffuser_**](https://github.com/huggingface/diffusers?tab=readme-ov-file) model as its foundation to create natural landscape imagery in the enchanting and iconic style of Studio Ghibli.
+It produces high-resolution visuals at _704×512_ pixels, capturing diverse sceneries—from forests, beaches, mountains, and deserts to dynamic atmospheres shaped by varying weather conditions such as bright sunshine, gentle snowfall, and misty fog.
 <p align="center">
     <img src="images/training_examples.png" alt="Training Images"/>
 </p>
+
+The training dataset consists of _2400 images_, generated using the following configuration:
+
+```
+MODEL_ID = "nitrosocke/Ghibli-Diffusion"
+CFG_SCALE = 7
+WIDTH = 704
+HEIGHT = 512
+SAMPLER = "Euler a"
+```
 
 ## Training
 The model was fine-tuned from [**_OpenAI's improved-diffusion_**](https://github.com/openai/improved-diffusion/tree/main) model for using _20k_ training steps. This fine-tuning process adapted the original diffusion model to better capture the unique artistic style and diverse natural landscapes characteristic of Studio Ghibli, enhancing its ability to generate high-quality images in this specific style.
