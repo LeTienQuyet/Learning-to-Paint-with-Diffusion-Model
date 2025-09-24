@@ -14,8 +14,7 @@ It produces high-resolution visuals at _704×512_ pixels, capturing diverse scen
 </p>
 
 The training dataset consists of _2400 images_, generated using the following configuration:
-
-```
+```python
 MODEL_ID = "nitrosocke/Ghibli-Diffusion"
 CFG_SCALE = 7
 WIDTH = 704
@@ -24,10 +23,16 @@ SAMPLER = "Euler a"
 ```
 
 ## Training
-The model was fine-tuned from [**_OpenAI's improved-diffusion_**](https://github.com/openai/improved-diffusion/tree/main) model for using _20k_ training steps. This fine-tuning process adapted the original diffusion model to better capture the unique artistic style and diverse natural landscapes characteristic of Studio Ghibli, enhancing its ability to generate high-quality images in this specific style.
-The fine-tuned model in this project produces images at a resolution of _256x256_ pixels. 
+The model was trained from scratch for _132k_ training steps using [**_OpenAI's improved-diffusion_**](https://github.com/openai/improved-diffusion/tree/main). This training process allowed the diffusion model to learn directly from the dataset, enabling it to capture the distinctive artistic style and diverse natural landscapes reminiscent of Studio Ghibli, thereby enhancing its capability to generate high-quality images in this specific style. The trained model in this project produces images at a resolution of _256x256_ pixels.
+Configuration for training:
+```python
+MODEL_FLAGS="--image_size 256 --num_channels 128 --num_res_blocks 2 --num_heads 1 --learn_sigma True --use_scale_shift_norm False --attention_resolutions 16"
+DIFFUSION_FLAGS="--diffusion_steps 1000 --noise_schedule linear --rescale_learned_sigmas False --rescale_timesteps False --use_scale_shift_norm False"
+TRAIN_FLAGS="--lr 2e-5 --batch_size 4 --lr_anneal_steps 132000"
+```
+
 ## Examples
 In my experiments, I tried fine-tuning the model with landscape scenes that included humans. However, the generated images of people were unrealistic and somewhat distorted. This was mainly due to the poor quality and insufficient diversity of the training data related to human figures. As a result, I decided to focus the training exclusively on natural landscapes to ensure higher quality and more coherent image generation.
 <p align="center">
-    <img src="images/generated_examples.png" alt="Generated Images"/>
+    <img src="images/generated_examples_0.9999.png" alt="Generated Images with alpha = 0.9999"/>
 </p>
