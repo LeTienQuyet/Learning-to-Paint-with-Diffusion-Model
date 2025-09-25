@@ -33,6 +33,7 @@ TRAIN_FLAGS="--lr 2e-5 --batch_size 4 --lr_anneal_steps 132000"
 
 ## Examples
 In my experiments, I tried fine-tuning the model with landscape scenes that included humans. However, the generated images of people were unrealistic and somewhat distorted. This was mainly due to the poor quality and insufficient diversity of the training data related to human figures. As a result, I decided to focus the training exclusively on natural landscapes to ensure higher quality and more coherent image generation.
-<p align="center">
-    <img src="images/generated_examples_0.9999.png" alt="Generated Images with alpha = 0.9999"/>
+<p style="margin:0; padding:0;">
+  <img src="images/1_generated_examples_0.9999.png"  style="margin:0; padding:0; display:block;" />
+  <img src="images/2_generated_examples_0.9999.png" style="margin:0; padding:0; display:block;" />
 </p>
