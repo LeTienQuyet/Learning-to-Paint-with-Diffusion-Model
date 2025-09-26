@@ -13,7 +13,7 @@ It produces high-resolution visuals at _704×512_ pixels, capturing diverse scen
     <img src="images/training_examples.png" alt="Training Images"/>
 </p>
 
-The training dataset consists of _2400 images_, generated using the following configuration:
+The training dataset consists of _4800 images_, generated using the following configuration:
 ```python
 MODEL_ID = "nitrosocke/Ghibli-Diffusion"
 CFG_SCALE = 7
@@ -21,7 +21,13 @@ WIDTH = 704
 HEIGHT = 512
 SAMPLER = "Euler a"
 ```
+You can download the complete [dataset](https://huggingface.co/datasets/quyetISquiet/ghibli_landscape_dataset) from the Hugging or `Datasets` library:
+```python
+from datasets import load_dataset
 
+# Login using e.g. `huggingface-cli login` to access this dataset
+ds = load_dataset("quyetISquiet/ghibli_landscape_dataset")
+```
 ## Training
 The model was trained from scratch for _132k_ training steps using [**_OpenAI's improved-diffusion_**](https://github.com/openai/improved-diffusion/tree/main). This training process allowed the diffusion model to learn directly from the dataset, enabling it to capture the distinctive artistic style and diverse natural landscapes reminiscent of Studio Ghibli, thereby enhancing its capability to generate high-quality images in this specific style. The trained model in this project produces images at a resolution of _256x256_ pixels.
 Configuration for training:
